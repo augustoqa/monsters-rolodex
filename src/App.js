@@ -20,6 +20,11 @@ class App extends Component {
   }
 
   render() {
+    const { monsters, serachField } = this.state;
+    const filteredMonsters = monsters.filter((monster) =>
+      monster.name.toLowerCase().includes(serachField)
+    );
+
     return (
       <div className="App">
         <input
@@ -27,7 +32,7 @@ class App extends Component {
           placeholder="search monsters"
           onChange={(e) => this.setState({ serachField: e.target.value })}
         />
-        <CardList monsters={this.state.monsters} />
+        <CardList monsters={filteredMonsters} />
       </div>
     );
   }
